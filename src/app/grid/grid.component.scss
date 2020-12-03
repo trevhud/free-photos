@@ -1,0 +1,37 @@
+@use "@material/image-list";
+@use "@material/image-list/mdc-image-list";
+
+.masonry-image-list {
+  @include image-list.masonry-columns(5);
+  margin: 17px;
+
+  @media (max-width: 900px) {
+    @include image-list.masonry-columns(3);
+  }
+
+  a {
+    text-decoration: unset;
+    color: white;
+  }
+
+  img.ng-lazyloaded {
+    animation: fadein .5s;
+  }
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  mat-icon {
+    margin-right: 15px;
+  }
+
+  .mdc-image-list__supporting {
+    height: unset;
+
+    .mdc-image-list__label {
+      white-space: unset;
+    }
+  }
+}
+
