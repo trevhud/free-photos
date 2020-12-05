@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { createApi } from 'unsplash-js'
-import { from, BehaviorSubject } from 'rxjs';
-import { map, tap, startWith, take } from 'rxjs/operators';
+import { from, BehaviorSubject, Observable } from 'rxjs';
+import { map, tap, startWith, take, share, shareReplay } from 'rxjs/operators';
+import { Response, Photo } from './response.interface'
+import { ApiResponse } from 'unsplash-js/dist/helpers/response';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,19 @@ import { map, tap, startWith, take } from 'rxjs/operators';
 export class PhotosService {
   constructor() { }
   private perPage = 15
+  private photosSubject = new BehaviorSubject([])
 
-  api = createApi({
+  private api = createApi({
     accessKey: 'IFhRApYnAR6-xhvW9ty0SQa_CUjBGzzqkQU5fe-Alf4'
   })
-
-  photosSubject = new BehaviorSubject([])
 
   photosList$ = this.photosSubject.asObservable().pipe(
     startWith(this.getPhotos(1))
   )
+
+  getMorePhotos(page:number) {
+    this.getPhotos(page)
+  }
 
   private getPhotos(page:number) {
     return from(this.api.photos.list({ perPage: this.perPage, page: page }))
@@ -30,12 +35,9 @@ export class PhotosService {
           const currentBatch = this.photosSubject.getValue()
           this.photosSubject.next(currentBatch.concat(newPhotos))
         }),
-        take(1)
+        take(1),
+        shareReplay(1)
       ).subscribe()
-  }
-
-  getMorePhotos(page:number) {
-    this.getPhotos(page)
   }
 
 }
