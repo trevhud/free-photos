@@ -14,27 +14,31 @@ export class PhotosService {
   constructor() { }
   private perPage = 15
   private scrollTimes = 1
+
   private photosSubject = new BehaviorSubject([])
   searchTermSubject = new BehaviorSubject<string>('')
+  favoritesSubject = new BehaviorSubject<boolean>(false)
 
   private api = createApi({
     accessKey: 'IFhRApYnAR6-xhvW9ty0SQa_CUjBGzzqkQU5fe-Alf4'
   })
-
+  
   searchResults$ = this.searchTermSubject.asObservable().pipe(
     debounceTime(400),
     distinctUntilChanged(),
-    tap(string => console.log('search string', string)),
     map(term => this.getPhotos(1, term || null)),
     toArray()
   )
 
   photosList$ = this.photosSubject.asObservable()
-
+  favoriteValue$ = this.favoritesSubject.asObservable()
   photosWithSearch$ = merge(this.searchResults$, this.photosList$)
+
+  photosWithSearchAndFavs$ = combineLatest(this.photosWithSearch$, this.favoriteValue$)
     .pipe(
-      // startWith(this.getPhotos(1)),
-      tap(results => console.log('combined', results))
+      map(([response, showFavorites]) => 
+        showFavorites ? {...response, results: response.results.filter(photo => photo.favorite)} : response
+      )
     )
 
   getMorePhotos() {
@@ -59,7 +63,6 @@ export class PhotosService {
   private manipulateSubject(response:Response) {
     const lastBatch = this.photosSubject.getValue()
     const searchTerm = this.searchTermSubject.getValue()
-    console.log('just returned: response, batch, term', response, lastBatch, searchTerm)
 
     if (response.apiType !== lastBatch.apiType || response.query && (response.query !== lastBatch.query)) {
       this.scrollTimes = 1

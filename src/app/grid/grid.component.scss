@@ -16,6 +16,11 @@
 
   mat-icon {
     margin-right: 15px;
+    cursor: pointer;
+
+    &.yellow {
+      color: yellow;
+    }
   }
 
   .mdc-image-list__supporting {

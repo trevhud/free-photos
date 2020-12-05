@@ -8,7 +8,7 @@ import { PhotosService } from '../photos.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent {
-  photos$ = this.photosService.photosWithSearch$
+  photos$ = this.photosService.photosWithSearchAndFavs$
 
   onScroll(): void {
     this.photosService.getMorePhotos()

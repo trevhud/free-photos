@@ -1,6 +1,10 @@
 <mat-toolbar>
   <span>Free Photos</span>
   <span class="spacer"></span>
+  <mat-checkbox [checked]="favoritesOnly"
+                (change)="favoritesSubject.next($event.checked)">My Favorites
+  </mat-checkbox>
+  <span class="spacer"></span>
   <span class="search">
     <app-search></app-search>
   </span>
