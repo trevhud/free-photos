@@ -2,7 +2,9 @@ export interface Response {
   results: object[],
   total: number,
   nextPage?: number,
-  total_pages?: number
+  total_pages?: number,
+  apiType?: string,
+  query?: string
 }
 
 export interface Photo {

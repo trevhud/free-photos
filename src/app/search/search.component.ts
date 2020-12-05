@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-search',
@@ -9,8 +10,9 @@ import { Subject } from 'rxjs';
 })
 export class SearchComponent {
   
+  searchTermSubject = this.photosService.searchTermSubject
 
-  constructor() { }
+  constructor(private photosService: PhotosService) { }
 
 
 }

@@ -1,6 +1,6 @@
 <div infinite-scroll (scrolled)="onScroll()">
-  <ul *ngIf="photosList$ | async as photosList" class="mdc-image-list mdc-image-list--masonry masonry-image-list">
-    <li *ngFor="let photo of photosList" class="mdc-image-list__item">
+  <ul *ngIf="photos$ | async as photos" class="mdc-image-list mdc-image-list--masonry masonry-image-list">
+    <li *ngFor="let photo of photos.results" class="mdc-image-list__item">
       <img class="mdc-image-list__image" src="{{photo.urls.small}}"/>
       <div class="mdc-image-list__supporting">
         <mat-icon aria-hidden="false" aria-label="Example star icon">star</mat-icon>

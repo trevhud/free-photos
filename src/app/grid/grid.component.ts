@@ -8,13 +8,10 @@ import { PhotosService } from '../photos.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent {
-  scrollTimes:number = 0
-  photosList$ = this.photosService.photosList$
+  photos$ = this.photosService.photosWithSearch$
 
   onScroll(): void {
-    this.scrollTimes++
-    console.log('scrolltimes', this.scrollTimes)
-    this.photosService.getMorePhotos(this.scrollTimes+1)
+    this.photosService.getMorePhotos()
   }
 
   constructor(private photosService: PhotosService) { }
