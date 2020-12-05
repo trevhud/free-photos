@@ -1,11 +1,13 @@
-<ul *ngIf="photosList$ | async as photosList" class="mdc-image-list mdc-image-list--masonry masonry-image-list mdc-image-list--with-text-protection">
-  <li *ngFor="let photo of photosList" class="mdc-image-list__item">
-    <img class="mdc-image-list__image" [lazyLoad]="photo.urls.small"/>
-    <div class="mdc-image-list__supporting">
-      <mat-icon aria-hidden="false" aria-label="Example star icon">star</mat-icon>
-      <a href="{{'https://unsplash.com/@' + photo.user.username}}" target="_blank">
-        <span class="mdc-image-list__label">{{(photo.description || photo.alt_description) | titlecase}} by {{photo.user.name}}</span>
-      </a>
-    </div>
-  </li>
-</ul>
+<div infinite-scroll (scrolled)="onScroll()">
+  <ul *ngIf="photosList$ | async as photosList" class="mdc-image-list mdc-image-list--masonry masonry-image-list">
+    <li *ngFor="let photo of photosList" class="mdc-image-list__item">
+      <img class="mdc-image-list__image" src="{{photo.urls.small}}"/>
+      <div class="mdc-image-list__supporting">
+        <mat-icon aria-hidden="false" aria-label="Example star icon">star</mat-icon>
+        <a href="{{'https://unsplash.com/@' + photo.user.username}}" target="_blank">
+          <span class="mdc-image-list__label">{{(photo.description || photo.alt_description) | titlecase}} by {{photo.user.name}}</span>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

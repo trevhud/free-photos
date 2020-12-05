@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { GridService } from './grid.service';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-grid',
@@ -8,8 +8,15 @@ import { GridService } from './grid.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent {
-  photosList$ = this.gridService.photosList$
+  scrollTimes:number = 0
+  photosList$ = this.photosService.photosList$
 
-  constructor(private gridService: GridService) { }
+  onScroll(): void {
+    this.scrollTimes++
+    console.log('scrolltimes', this.scrollTimes)
+    this.photosService.getMorePhotos(this.scrollTimes+1)
+  }
+
+  constructor(private photosService: PhotosService) { }
 
 }
