@@ -1,12 +1,12 @@
 @use "@material/image-list";
 @use "@material/image-list/mdc-image-list";
 
-.masonry-image-list {
-  @include image-list.masonry-columns(5);
+.image-list {
+  @include image-list.standard-columns(5, 15px);
   margin: 17px;
 
   @media (max-width: 900px) {
-    @include image-list.masonry-columns(3);
+    @include image-list.standard-columns(3, 15px);
   }
 
   a {

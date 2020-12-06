@@ -1,9 +1,9 @@
 <div infinite-scroll (scrolled)="onScroll()">
-  <ul *ngIf="photos$ | async as photos" class="mdc-image-list mdc-image-list--masonry masonry-image-list">
+  <ul *ngIf="photos$ | async as photos" class="mdc-image-list image-list">
 
     <li *ngFor="let photo of photos.results" class="mdc-image-list__item">
 
-      <img class="mdc-image-list__image" src="{{photo.urls.small}}"/>
+      <img class="mdc-image-list__image" src="{{photo.urls.small}}" (click)="openDialog(photo)"/>
 
       <div class="mdc-image-list__supporting">
 

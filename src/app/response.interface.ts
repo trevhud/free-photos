@@ -1,5 +1,5 @@
 export interface Response {
-  results: object[],
+  results: Photo[],
   total: number,
   nextPage?: number,
   total_pages?: number,

@@ -1,5 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 import { PhotosService } from '../photos.service';
+import { Photo } from '../response.interface';
 
 @Component({
   selector: 'app-grid',
@@ -14,6 +17,15 @@ export class GridComponent {
     this.photosService.getMorePhotos()
   }
 
-  constructor(private photosService: PhotosService) { }
+  openDialog(photo:Photo) {
+    this.dialog.open(DialogComponent, {
+      data: photo,
+      height: '95vh',
+      width: '95vw'
+    })
+  }
+
+  constructor(private photosService: PhotosService,
+              private dialog: MatDialog) { }
 
 }

@@ -62,7 +62,6 @@ export class PhotosService {
 
   private manipulateSubject(response:Response) {
     const lastBatch = this.photosSubject.getValue()
-    const searchTerm = this.searchTermSubject.getValue()
 
     if (response.apiType !== lastBatch.apiType || response.query && (response.query !== lastBatch.query)) {
       this.scrollTimes = 1
