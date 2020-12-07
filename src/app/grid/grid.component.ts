@@ -20,7 +20,7 @@ export class GridComponent {
 
   openDialog(photo:Photo):void {
     this.dialog.open(DialogComponent, {
-      data: photo,
+      data: {...photo},
       height: '95vh',
       width: '95vw'
     })

@@ -16,9 +16,13 @@ export interface Photo {
     name: string
   },
   urls: {
-    small: string
+    small: string,
+    regular: string
   },
   description?: string,
   alt_description: string,
-  favorite?: boolean
+  favorite?: boolean,
+  height: number,
+  width: number,
+  created_at: string
 }

@@ -8,7 +8,7 @@ import { PhotosService } from './photos.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  title = 'free-photos';
+  favoritesOnly = false
 
   favoritesSubject = this.photosService.favoritesSubject
 

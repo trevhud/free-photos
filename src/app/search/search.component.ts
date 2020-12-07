@@ -13,5 +13,4 @@ export class SearchComponent {
 
   constructor(private photosService: PhotosService) { }
 
-
 }
