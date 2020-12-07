@@ -1,3 +1,5 @@
+import { ApiResponse } from 'unsplash-js/dist/helpers/response';
+
 export interface Response {
   results: Photo[],
   total: number,
@@ -8,6 +10,7 @@ export interface Response {
 }
 
 export interface Photo {
+  id: string,
   user: {
     username: string,
     name: string
@@ -16,5 +19,6 @@ export interface Photo {
     small: string
   },
   description?: string,
-  alt_description: string
+  alt_description: string,
+  favorite?: boolean
 }

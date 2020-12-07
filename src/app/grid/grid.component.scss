@@ -14,13 +14,8 @@
     color: black;
   }
 
-  mat-icon {
-    margin-right: 15px;
-    cursor: pointer;
-
-    &.yellow {
-      color: yellow;
-    }
+  img {
+     cursor: pointer;
   }
 
   .mdc-image-list__supporting {
@@ -29,6 +24,15 @@
     .mdc-image-list__label {
       white-space: unset;
     }
+  }
+}
+
+mat-icon {
+  margin-right: 15px;
+  cursor: pointer;
+
+  &.yellow {
+    color: yellow;
   }
 }
 

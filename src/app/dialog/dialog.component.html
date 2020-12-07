@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{(data.description || data.alt_description) | titlecase}} by {{data.user.name}}</h1>
+
+<div mat-dialog-content>
+
+  <img class="mdc-image-list__image" src="{{data.urls.regular}}"/>
+
+  <div class="subtext">
+
+    <span>Taken on {{data.created_at | date}}</span>
+
+    <mat-icon aria-hidden="false"
+      aria-label="star icon"
+      [ngClass]="data.favorite && 'yellow'">star</mat-icon>
+
+    <span>Resolution: {{data.width}}x{{data.height}}</span>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { map, tap } from 'rxjs/operators';
 import { DialogComponent } from '../dialog/dialog.component';
 import { PhotosService } from '../photos.service';
 import { Photo } from '../response.interface';
@@ -17,7 +18,7 @@ export class GridComponent {
     this.photosService.getMorePhotos()
   }
 
-  openDialog(photo:Photo) {
+  openDialog(photo:Photo):void {
     this.dialog.open(DialogComponent, {
       data: photo,
       height: '95vh',

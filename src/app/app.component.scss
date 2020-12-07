@@ -4,3 +4,12 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+mat-icon {
+  margin-right: 15px;
+  cursor: pointer;
+
+  &.yellow {
+    color: yellow;
+  }
+}

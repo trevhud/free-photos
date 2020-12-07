@@ -1,0 +1,16 @@
+.mat-dialog-content {
+  overflow: unset;
+}
+
+.subtext {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+mat-icon {
+  &.yellow {
+    color: yellow;
+  }
+}
+
