@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 It makes use of RXJS for a fully reactive UI based on a few streams of data
 
+It allows the user to see recent uploads to unsplash and also search images as well.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
